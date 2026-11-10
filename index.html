@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Aotearoa 毛利人與紐西蘭</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 一條時間長軸。桌機左側固定章節欄，右側單欄閱讀；每章以年代標籤開頭，圖解穿插在文字之間。 */
+:root{
+  --paper:#F2F5F2; --surface:#FFFFFF; --cloud:#E4ECE7; --ink:#13201B; --muted:#56685F; --line:#D2DCD6;
+  --pounamu:#1E6A51; --pounamu-soft:#D7EBE2; --kokowai:#A63B24; --kokowai-soft:#F5E0D9;
+  --display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --s-1:.8125rem; --s0:1rem; --s1:1.125rem; --s2:1.375rem; --s3:1.75rem; --s4:2.375rem; --s5:clamp(2.6rem,7vw,4.6rem);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0D1613; --surface:#13201B; --cloud:#182821; --ink:#E6EEE9; --muted:#9AAFA5; --line:#253831;
+  --pounamu:#5DC09A; --pounamu-soft:#173A2E; --kokowai:#E5826A; --kokowai-soft:#3A1F18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0D1613; --surface:#13201B; --cloud:#182821; --ink:#E6EEE9; --muted:#9AAFA5; --line:#253831;
+  --pounamu:#5DC09A; --pounamu-soft:#173A2E; --kokowai:#E5826A; --kokowai-soft:#3A1F18; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--s0);line-height:1.85;-webkit-font-smoothing:antialiased}
+a{color:var(--pounamu);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--kokowai);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);line-height:1.25;text-wrap:balance;margin:0}
+h2{font-size:var(--s4);font-weight:900;letter-spacing:.01em}
+h3{font-size:var(--s2);font-weight:700}
+p{margin:0}
+.mi{font-family:var(--mono);font-size:.92em;letter-spacing:.01em;color:var(--pounamu)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:var(--cloud)}
+.hero .wrap{padding-block:clamp(48px,9vw,104px) 0;position:relative;z-index:1}
+.eyebrow{font-family:var(--mono);font-size:var(--s-1);letter-spacing:.14em;text-transform:uppercase;color:var(--kokowai)}
+.hero h1{font-size:var(--s5);font-weight:900;margin-top:14px;letter-spacing:.02em}
+.hero h1 span{display:block;font-family:var(--mono);font-weight:400;font-size:.32em;letter-spacing:.32em;color:var(--pounamu);margin-bottom:10px}
+.lede{max-width:34em;font-size:var(--s1);color:var(--muted);margin-top:18px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:40px;border-top:1px solid var(--line)}
+.stat{padding:18px 16px 26px 0;min-width:0}
+.stat+.stat{padding-left:16px;border-left:1px solid var(--line)}
+.stat b{display:block;font-family:var(--display);font-size:var(--s3);font-weight:900;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat small{display:block;color:var(--muted);font-size:var(--s-1);margin-top:6px;line-height:1.5}
+.ridge{position:absolute;inset:auto 0 0 0;height:62%;z-index:0;pointer-events:none}
+.ridge .r1{fill:var(--pounamu-soft)} .ridge .r2{fill:var(--paper);opacity:.55}
+.cloudband{position:absolute;left:-30%;top:46%;width:160%;height:26px;border-radius:999px;background:var(--surface);opacity:.75;filter:blur(6px);animation:drift 38s linear infinite alternate;z-index:0}
+.cloudband.two{top:54%;height:14px;opacity:.5;animation-duration:52s}
+@keyframes drift{from{transform:translateX(-6%)}to{transform:translateX(6%)}}
+
+/* layout */
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:56px 80px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;font-size:var(--s-1)}
+nav.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+nav.toc li a{display:grid;grid-template-columns:2.4em 1fr;padding:6px 0 6px 14px;color:var(--muted);text-decoration:none;margin-left:-1px;border-left:2px solid transparent;line-height:1.4}
+nav.toc li a span{font-family:var(--mono);color:var(--pounamu)}
+nav.toc li a.on{color:var(--ink);border-left-color:var(--kokowai);font-weight:700}
+nav.toc li a:hover{color:var(--ink)}
+.toc-title{font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-size:.72rem}
+main{min-width:0}
+section.ch{padding-block:8px 64px;border-bottom:1px solid var(--line);margin-bottom:56px;scroll-margin-top:24px}
+section.ch:last-of-type{border-bottom:0}
+.ch-head{display:grid;gap:10px;margin-bottom:26px}
+.ch-head .era{font-family:var(--mono);font-size:var(--s-1);color:var(--kokowai);letter-spacing:.08em}
+.ch-head .num{font-family:var(--mono);color:var(--pounamu);font-size:var(--s-1);letter-spacing:.14em}
+.prose{max-width:40em;display:grid;gap:16px}
+.prose p{font-size:var(--s0)}
+.prose h3{margin-top:22px}
+.lead-p{font-size:var(--s1)!important;color:var(--ink)}
+ul.dots{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+ul.dots li{position:relative;padding-left:20px}
+ul.dots li::before{content:"";position:absolute;left:2px;top:.78em;width:7px;height:7px;border-radius:50%;background:var(--pounamu)}
+ol.steps{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:s}
+ol.steps li{display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:12px;counter-increment:s}
+ol.steps li::before{content:counter(s);font-family:var(--mono);font-size:var(--s-1);width:1.9rem;height:1.9rem;border-radius:50%;display:grid;place-items:center;border:1px solid var(--pounamu);color:var(--pounamu);margin-top:.25em}
+
+figure{margin:28px 0;max-width:46em}
+figure .frame{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;overflow-x:auto}
+figcaption{font-size:var(--s-1);color:var(--muted);margin-top:10px;line-height:1.6}
+svg text{font-family:var(--body);fill:var(--ink)}
+svg .lbl-muted{fill:var(--muted)}
+svg .mono{font-family:var(--mono)}
+
+.pullquote{max-width:36em;margin:30px 0;padding:6px 0 6px 22px;border-left:3px solid var(--kokowai);font-family:var(--display);font-size:var(--s2);line-height:1.6;font-weight:700}
+
+/* concept grid */
+.concepts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px;max-width:58em}
+.concept{background:var(--surface);padding:18px 18px 20px;display:grid;gap:6px;align-content:start;min-width:0}
+.concept .term{font-family:var(--mono);font-size:var(--s1);color:var(--pounamu);font-weight:500}
+.concept .gloss{font-family:var(--display);font-weight:700}
+.concept p{font-size:.94rem;color:var(--muted);line-height:1.7}
+
+/* arts */
+.arts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 36px;margin-top:26px;max-width:58em}
+.art{display:grid;gap:8px;align-content:start;padding-top:14px;border-top:2px solid var(--ink);min-width:0}
+.art .k{font-family:var(--mono);font-size:var(--s-1);color:var(--kokowai);letter-spacing:.06em}
+.art p{font-size:.96rem}
+
+/* treaty */
+.treaty{margin-top:24px;max-width:50em}
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px;background:var(--surface);gap:4px}
+.toggle button{font:inherit;font-size:var(--s-1);border:0;background:transparent;color:var(--muted);padding:7px 16px;border-radius:999px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.articles{display:grid;gap:12px;margin-top:16px}
+.article{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.article .n{font-family:var(--display);font-weight:900;color:var(--pounamu)}
+.article .t{min-width:0}
+.article .key{font-family:var(--mono);color:var(--kokowai);font-size:.95em}
+.article .alt{display:block;margin-top:6px;font-size:var(--s-1);color:var(--muted)}
+
+/* land grid */
+.landfig .grid1000{display:grid;grid-template-columns:repeat(50,1fr);gap:2px;max-width:560px}
+.landfig .grid1000 i{display:block;aspect-ratio:1;background:var(--pounamu-soft);border-radius:1px}
+.landfig .grid1000 i.kept{background:var(--kokowai)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;font-size:var(--s-1);color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--pounamu-soft)}
+.legend span.k::before{background:var(--kokowai)}
+
+/* tables */
+.tbl{overflow-x:auto;max-width:48em;margin-top:20px}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:var(--s-1);font-weight:500;color:var(--muted);letter-spacing:.06em}
+td.y{font-family:var(--mono);color:var(--pounamu);white-space:nowrap;font-variant-numeric:tabular-nums}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* legends */
+.legends{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:26px}
+.legend-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
+.legend-card .place{font-family:var(--mono);font-size:var(--s-1);color:var(--kokowai);letter-spacing:.06em}
+.legend-card h3{font-size:var(--s1)}
+.legend-card p{font-size:.94rem;line-height:1.75}
+
+
+/* legend groups */
+.lg-group{display:flex;align-items:baseline;gap:14px;margin:44px 0 4px;font-size:var(--s3);font-weight:900}
+.lg-group span{font-family:var(--mono);font-size:var(--s-1);font-weight:500;color:var(--paper);background:var(--kokowai);border-radius:999px;min-width:2.1rem;height:2.1rem;display:inline-grid;place-items:center;letter-spacing:.04em}
+.legend-card.wide{grid-column:1/-1}
+.legend-card.wide p{max-width:44em}
+ol.maui{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:0;max-width:52em;counter-reset:m;border-left:2px solid var(--pounamu)}
+ol.maui li{position:relative;padding:4px 0 26px 30px;counter-increment:m}
+ol.maui li::before{content:counter(m);position:absolute;left:-15px;top:2px;width:28px;height:28px;border-radius:50%;background:var(--paper);border:2px solid var(--pounamu);color:var(--pounamu);font-family:var(--mono);font-size:var(--s-1);display:grid;place-items:center}
+ol.maui li b{font-family:var(--display);font-size:var(--s1);display:block;margin-bottom:6px}
+ol.maui li p{font-size:.96rem;max-width:42em}
+
+/* phrases */
+.phrases{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:22px;max-width:58em}
+.phrase{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface);display:grid;gap:4px;min-width:0}
+.phrase .w{font-family:var(--display);font-weight:900;font-size:var(--s2);letter-spacing:.01em}
+.phrase .say{font-family:var(--mono);font-size:var(--s-1);color:var(--kokowai)}
+.phrase .m{font-size:.92rem;color:var(--muted)}
+
+/* timeline */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chips button{font:inherit;font-size:var(--s-1);border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:6px 14px;border-radius:999px;cursor:pointer}
+.chips button[aria-pressed="true"]{border-color:var(--pounamu);color:var(--pounamu);background:var(--pounamu-soft);font-weight:700}
+.timeline{list-style:none;margin:24px 0 0;padding:0;position:relative;max-width:44em}
+.timeline::before{content:"";position:absolute;left:7.2rem;top:6px;bottom:6px;width:1px;background:var(--line)}
+.timeline li{display:grid;grid-template-columns:6.4rem minmax(0,1fr);gap:28px;padding:10px 0;position:relative}
+.timeline li::after{content:"";position:absolute;left:calc(7.2rem - 5px);top:1.15em;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2px solid var(--pounamu)}
+.timeline li[data-era="loss"]::after,.timeline li[data-era="contact"]::after{border-color:var(--kokowai)}
+.timeline .when{font-family:var(--mono);font-size:var(--s-1);color:var(--muted);text-align:right;padding-top:.2em;font-variant-numeric:tabular-nums}
+.timeline .what{min-width:0}
+.timeline .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--pounamu);display:block}
+
+.sources{font-size:var(--s-1);color:var(--muted);columns:2;column-gap:36px;max-width:58em}
+.sources li{break-inside:avoid;margin-bottom:6px}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:var(--s-1)}
+
+@media (max-width:980px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0}
+  nav.toc{display:none}
+}
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(3){padding-left:0;border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  .arts{grid-template-columns:minmax(0,1fr)}
+  .article{grid-template-columns:minmax(0,1fr);gap:4px}
+  .sources{columns:1}
+  .timeline::before{left:5.2rem}
+  .timeline li{grid-template-columns:4.6rem minmax(0,1fr);gap:22px}
+  .timeline li::after{left:calc(5.2rem - 5px)}
+  .landfig .grid1000{grid-template-columns:repeat(40,1fr)}
+}
+</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="cloudband" aria-hidden="true"></div>
+  <div class="cloudband two" aria-hidden="true"></div>
+  <svg class="ridge" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+    <polygon class="r1" points="0,300 0,210 90,170 160,190 250,120 320,150 400,80 470,130 540,60 610,110 700,40 780,120 860,90 930,140 1010,100 1090,160 1200,130 1200,300"/>
+    <polygon class="r2" points="0,300 0,250 120,230 230,255 360,215 480,245 600,220 720,250 850,225 980,250 1100,232 1200,248 1200,300"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Aotearoa · 長白雲之鄉</div>
+    <h1><span>TE IWI MĀORI · NEW ZEALAND</span>毛利人與紐西蘭</h1>
+    <p class="lede">一塊沉進海底的大陸，一群看星星找到它的航海家，一份用兩種語言寫成、意思卻不一樣的條約。從 8,300 萬年前的地殼裂開，講到今天街上的雙語路牌。</p>
+    <div class="stats">
+      <div class="stat"><b>94%</b><small>西蘭大陸沉在太平洋底下的比例</small></div>
+      <div class="stat"><b>1250–1300</b><small>毛利祖先駕獨木舟抵達的年代</small></div>
+      <div class="stat"><b>1840</b><small>懷唐伊條約簽署，約 540 位酋長簽名</small></div>
+      <div class="stat"><b>17.8%</b><small>2023 年人口普查中毛利族裔的比例</small></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="章節">
+    <div class="toc-title">章節</div>
+    <ol id="toc">
+      <li><a href="#land"><span>01</span>沉沒的大陸</a></li>
+      <li><a href="#voyage"><span>02</span>看星星的航海家</a></li>
+      <li><a href="#worldview"><span>03</span>毛利世界觀</a></li>
+      <li><a href="#arts"><span>04</span>藝術與表演</a></li>
+      <li><a href="#contact"><span>05</span>相遇與條約</a></li>
+      <li><a href="#loss"><span>06</span>失去土地與語言</a></li>
+      <li><a href="#revival"><span>07</span>復興</a></li>
+      <li><a href="#ngaitahu"><span>08</span>南島的 Ngāi Tahu</a></li>
+      <li><a href="#legends"><span>09</span>神話與傳說</a></li>
+      <li><a href="#manners"><span>10</span>禮儀與毛利語</a></li>
+      <li><a href="#timeline"><span>11</span>大事年表</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+  <!-- 01 -->
+  <section class="ch" id="land">
+    <div class="ch-head"><span class="num">CHAPTER 01</span><span class="era">8,300 萬年前 — 現在</span><h2>沉沒的大陸</h2></div>
+    <div class="prose">
+      <p class="lead-p">紐西蘭腳下是一塊叫<span class="mi">Zealandia</span>（西蘭大陸）的大陸。面積約 490 萬平方公里，比印度還大，但 94% 沉在太平洋底下，露出水面的只有南北兩島和幾座小島。地質學家直到 2017 年才正式把它列為一塊大陸。</p>
+      <p>約 8,300 萬年前，西蘭大陸從岡瓦納古大陸裂開，和澳洲、南極慢慢分開。之後幾千萬年它孤懸在海上，沒有陸生哺乳類，鳥類填滿了哺乳類的位置。不會飛的奇異鳥、體型巨大的恐鳥（<span class="mi">moa</span>）都是這段孤立的結果。</p>
+    </div>
+
+    <figure>
+      <div class="frame">
+        <svg viewBox="0 0 640 300" width="100%" role="img" aria-labelledby="plateT">
+          <title id="plateT">紐西蘭跨在兩塊板塊交界的示意圖</title>
+          <rect x="0" y="0" width="640" height="300" rx="10" style="fill:var(--cloud)"/>
+          <path d="M0,0 L300,0 C285,90 300,190 270,300 L0,300 Z" style="fill:var(--pounamu-soft)"/>
+          <text x="40" y="40" style="font-weight:700">澳洲板塊</text>
+          <text x="470" y="40" style="font-weight:700">太平洋板塊</text>
+          <path d="M300,0 C285,90 300,190 270,300" style="fill:none;stroke:var(--kokowai);stroke-width:3;stroke-dasharray:7 5"/>
+          <path d="M330,52 C340,30 372,24 392,40 C410,56 400,82 380,92 C368,98 356,110 350,124 C340,108 322,96 330,52 Z" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/>
+          <path d="M346,134 C330,150 300,180 276,210 C262,228 240,250 236,262 C250,262 272,252 292,236 C318,214 344,186 360,158 C366,146 360,132 346,134 Z" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/>
+          <text x="410" y="78" style="font-size:13px">北島：太平洋板塊俯衝</text>
+          <text x="410" y="96" class="lbl-muted" style="font-size:12px">→ 火山、地熱、間歇泉</text>
+          <line x1="404" y1="74" x2="384" y2="68" style="stroke:var(--muted);stroke-width:1"/>
+          <text x="388" y="200" style="font-size:13px">南島：阿爾卑斯斷層</text>
+          <text x="388" y="218" class="lbl-muted" style="font-size:12px">兩塊板塊側向錯動、互相擠壓</text>
+          <text x="388" y="236" class="lbl-muted" style="font-size:12px">→ 推出南阿爾卑斯山</text>
+          <line x1="382" y1="204" x2="318" y2="196" style="stroke:var(--muted);stroke-width:1"/>
+          <path d="M120,230 l40,0 m-10,-7 l10,7 l-10,7" style="fill:none;stroke:var(--ink);stroke-width:2"/>
+          <path d="M560,150 l-40,0 m10,-7 l-10,7 l10,7" style="fill:none;stroke:var(--ink);stroke-width:2"/>
+          <text x="40" y="276" class="lbl-muted mono" style="font-size:11px">紅色虛線＝板塊交界（示意，未按比例）</text>
+        </svg>
+      </div>
+      <figcaption>兩塊板塊的交界從北島東邊外海一路斜切過南島。北島和南島的地形差異，就來自交界在兩地的運動方式不同。</figcaption>
+    </figure>
+
+    <div class="prose">
+      <h3>南阿爾卑斯山：長得快，也被削得快</h3>
+      <p>南島的阿爾卑斯斷層約 2,500 萬年前開始活動，斷層兩側的地塊已經錯開約 500 公里。兩塊板塊在這裡互相擠壓，把斷層東側不停往上推，形成南阿爾卑斯山脈。山長得快，被西岸大量雨水和冰河削得也快，所以今天的高度只是抬升總量的一小部分。</p>
+      <h3>冰河留下的峽灣和大湖</h3>
+      <p>冰河時期，冰川沿著山谷往下挖出 U 型谷。西南角沉入海裡的 U 型谷就是峽灣，留在內陸的就是 Wakatipu、Wānaka、Pūkāki 這些又深又長的湖。Pūkāki、Takāpō 的湖水呈乳藍色，是冰河磨出的細岩粉懸浮在水裡、散射陽光的結果。</p>
+      <h3>地震是這片土地的代價</h3>
+      <p>板塊交界上的國家一定多地震。2011 年基督城大地震重創市中心，2016 年 Kaikōura 地震把一段海岸整個抬出水面。</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="ch" id="voyage">
+    <div class="ch-head"><span class="num">CHAPTER 02</span><span class="era">約 1250 — 1300 年</span><h2>看星星的航海家</h2></div>
+    <div class="prose">
+      <p class="lead-p">毛利人的祖先來自東玻里尼西亞。他們不是漂流過來的，而是駕著雙殼獨木舟、有計畫地朝西南方的大海航行，在 1250 到 1300 年間抵達。這是人類最後定居的大塊陸地之一。</p>
+    </div>
+
+    <figure>
+      <div class="frame">
+        <svg viewBox="0 0 640 360" width="100%" role="img" aria-labelledby="triT">
+          <title id="triT">玻里尼西亞三角示意圖</title>
+          <rect x="0" y="0" width="640" height="360" rx="10" style="fill:var(--cloud)"/>
+          <polygon points="330,44 580,286 72,304" style="fill:var(--pounamu-soft);stroke:var(--pounamu);stroke-width:1.5;stroke-dasharray:4 4"/>
+          <circle cx="330" cy="44" r="7" style="fill:var(--pounamu)"/>
+          <circle cx="580" cy="286" r="7" style="fill:var(--pounamu)"/>
+          <circle cx="72" cy="304" r="9" style="fill:var(--kokowai)"/>
+          <circle cx="352" cy="196" r="7" style="fill:var(--ink)"/>
+          <path d="M342,204 C270,236 170,270 86,298" style="fill:none;stroke:var(--kokowai);stroke-width:2.5;stroke-dasharray:8 6"/>
+          <path d="M98,288 l-12,10 l15,3" style="fill:none;stroke:var(--kokowai);stroke-width:2.5"/>
+          <text x="344" y="40" style="font-weight:700">夏威夷</text>
+          <text x="476" y="314" style="font-weight:700">拉帕努伊（復活節島）</text>
+          <text x="88" y="336" style="font-weight:700">Aotearoa 紐西蘭</text>
+          <text x="368" y="190" style="font-weight:700">東玻里尼西亞</text>
+          <text x="368" y="208" class="lbl-muted" style="font-size:12px">社會群島、庫克群島一帶</text>
+          <text x="176" y="250" class="lbl-muted mono" style="font-size:11px">往西南航行</text>
+        </svg>
+      </div>
+      <figcaption>玻里尼西亞三角的三個頂點是夏威夷、拉帕努伊和紐西蘭，紐西蘭是最晚有人定居的一角。示意圖，未按比例。</figcaption>
+    </figure>
+
+    <div class="prose">
+      <h3>怎麼在大洋中央找到陸地</h3>
+      <ul class="dots">
+        <li><b>星星</b>：記住每顆星從海平線升起和落下的方位，當作羅盤上的刻度。航線編成歌謠背下來。</li>
+        <li><b>湧浪和風</b>：陰天看不到星星時，靠長距離湧浪的方向和風向維持航向。</li>
+        <li><b>鳥和雲</b>：鰹鳥、燕鷗、海燕白天出海覓食、傍晚飛回陸地，跟著牠們就找得到島。島嶼上方會積雲，遠遠就能看出陸地的位置。</li>
+        <li><b>雙殼獨木舟</b>：兩個船身並排，長約 20 公尺，速度快又穩，載得了人、食物、植物和狗。</li>
+      </ul>
+      <div class="pullquote">傳說航海家 Kupe 的妻子在海平線上看到一片長長的白雲，這片土地因此叫作 Aotearoa，「長白雲之鄉」。</div>
+      <h3>Hawaiki 與各族的獨木舟</h3>
+      <p>毛利傳統把祖先的故鄉稱為<span class="mi">Hawaiki</span>，人死後靈魂也會回到那裡。每個部族都記得自己的祖先搭的是哪一艘獨木舟，例如北島的 Te Arawa 族來自 Te Arawa 號、Tainui 諸族來自 Tainui 號。這份記憶是毛利人自我介紹的一部分。</p>
+      <h3>在新土地上活下來</h3>
+      <p>最早的居民獵捕海豹和不會飛的恐鳥。恐鳥沒有天敵，幾個世紀內就被吃到滅絕。從玻里尼西亞帶來的番薯（<span class="mi">kūmara</span>）只在溫暖的北島長得好，南島的人更依賴捕魚、捕鳥和季節性採集。西岸河床的綠玉（<span class="mi">pounamu</span>）沿著穿越南阿爾卑斯山的「綠玉之路」運到東岸和北島，今天的 Haast Pass、Arthur's Pass 都是當年的路線。歐洲人到來前，毛利人口可能已達 10 萬。</p>
+      <p>傳統航海技術在殖民後幾乎失傳。1976 年夏威夷的仿古獨木舟 Hōkūleʻa 不靠儀器從夏威夷航行到大溪地，證明這套方法真的可行，也帶動整個太平洋的航海復興。2019 年三艘仿古獨木舟在 Tuia 250 活動中環繞紐西蘭航行。</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="ch" id="worldview">
+    <div class="ch-head"><span class="num">CHAPTER 03</span><span class="era">今天仍在使用的觀念</span><h2>毛利世界觀</h2></div>
+    <div class="prose">
+      <p class="lead-p">這幾個詞在紐西蘭天天聽得到，說英文的紐西蘭人也直接用毛利語。記住它們，就看得懂一半的毛利文化。</p>
+    </div>
+    <div class="concepts">
+      <div class="concept"><span class="term">whānau · hapū · iwi</span><span class="gloss">家族、氏族、部族</span><p>由小到大三層組織。南島大部分屬於 Ngāi Tahu 族，最大的部族是北島的 Ngāpuhi。</p></div>
+      <div class="concept"><span class="term">whakapapa</span><span class="gloss">家譜</span><p>把自己、祖先、山、河、獨木舟串成一條線。正式自我介紹時先說「我的山、我的河、我的獨木舟」，最後才說名字。</p></div>
+      <div class="concept"><span class="term">mana</span><span class="gloss">威望、權威</span><p>人、部族、地方都有 mana。慷慨、守信會增加，失禮、失信會減少。</p></div>
+      <div class="concept"><span class="term">tapu · noa</span><span class="gloss">神聖禁忌 · 普通</span><p>頭、墳地、某些山是 tapu。食物能解除 tapu，所以食物不能放在頭上方，也不能坐在桌上。</p></div>
+      <div class="concept"><span class="term">marae · wharenui</span><span class="gloss">會堂廣場 · 雕刻大屋</span><p>整棟大屋就是一位祖先的身體：屋脊是脊骨，椽木是肋骨，正面的雕刻是祂的臉。</p></div>
+      <div class="concept"><span class="term">pōwhiri · hongi</span><span class="gloss">迎賓儀式 · 碰鼻禮</span><p>主人挑戰、呼喊、演講、唱歌，最後用碰鼻禮分享同一口氣，客人從此算自己人。</p></div>
+      <div class="concept"><span class="term">manaakitanga</span><span class="gloss">款待客人</span><p>照顧好客人能提升主人的 mana。紐西蘭觀光業最常引用的價值。</p></div>
+      <div class="concept"><span class="term">kaitiakitanga</span><span class="gloss">守護</span><p>人是土地和自然的守護者，不是擁有者。許多保育政策引用這個觀念。</p></div>
+      <div class="concept"><span class="term">taonga</span><span class="gloss">珍寶</span><p>包括綠玉、土地，也包括語言和歌謠這些看不見的東西。懷唐伊條約的爭議就卡在這個詞。</p></div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="ch" id="arts">
+    <div class="ch-head"><span class="num">CHAPTER 04</span><span class="era">刻在木頭、石頭和皮膚上的歷史</span><h2>藝術與表演</h2></div>
+    <div class="prose"><p class="lead-p">毛利人沒有文字，歷史和家譜靠雕刻、紋面、編織和歌謠保存下來。這些藝術不只是裝飾，每一道紋路都在記錄誰是誰的後代。</p></div>
+    <div class="arts">
+      <div class="art"><span class="k">TĀ MOKO</span><h3>紋面</h3><p>傳說酋長 Mataora 追著逃回地底世界的妻子 Niwareka，從她父親那裡學會紋面帶回人間。傳統工具是海鳥骨做的鑿子（<span class="mi">uhi</span>），把顏料鑿進皮膚，留下有溝槽的螺旋紋。男性紋滿整張臉，女性紋在下巴和嘴唇（<span class="mi">moko kauae</span>）。紋面記錄一個人的身分和 mana，部分酋長簽懷唐伊條約時，直接畫下自己的紋面當作簽名。</p></div>
+      <div class="art"><span class="k">MOKOMŌKAI</span><h3>被賣掉的頭顱</h3><p>歐洲人到來後，紋面的頭顱成了收藏品，有人甚至因此被殺。這些頭顱散落在世界各地的博物館，1980 年代起陸續送回紐西蘭。紋面一度幾乎消失，1980 年代後隨毛利文化復興重新出現，今天在街上、國會裡都看得到。</p></div>
+      <div class="art"><span class="k">WHAKAIRO</span><h3>雕刻</h3><p>木頭、骨頭、石頭都能刻。會堂的柱子、屋簷、獨木舟船頭刻滿祖先像，眼睛常鑲著鮑魚殼（<span class="mi">pāua</span>），在昏暗的屋裡會發光。雕刻曾被視為 tapu 的工作，學習和製作都有嚴格規矩。</p></div>
+      <div class="art"><span class="k">RARANGA</span><h3>編織</h3><p>主要材料是紐西蘭亞麻（<span class="mi">harakeke</span>）。籃子、蓆子、繩子都靠它，最珍貴的是貼滿鳥羽的斗篷（<span class="mi">kahu huruhuru</span>），只有身分崇高的人穿得起，今天大學畢業典禮上還會看到。</p></div>
+      <div class="art"><span class="k">KAPA HAKA · HAKA</span><h3>歌舞與姿勢舞</h3><p>Haka 不只是戰舞，迎賓、婚喪喜慶、紀念都會跳，動作包括瞪眼、吐舌、拍打身體。最有名的〈Ka Mate〉是酋長 Te Rauparaha 所作，紐西蘭國家橄欖球隊賽前跳的就是它。全國性的 kapa haka 比賽 Te Matatini 每兩年舉辦一次。</p></div>
+      <div class="art"><span class="k">POUNAMU</span><h3>綠玉</h3><p>傳說 Te Arawa 族的祖先 Ngāhue 在西岸 Arahura 河找到綠玉。它硬到可以做斧頭和武器，也被雕成魚鉤、螺旋（<span class="mi">koru</span>）等護身符。綠玉傳統上是送人的禮物，被送的人戴著它，就帶著送的人的祝福。</p></div>
+      <div class="art"><span class="k">HĀNGI</span><h3>地窯料理</h3><p>把石頭燒熱放進地坑，鋪上包好的肉、番薯和蔬菜，蓋土悶熟幾個小時。重要場合才做，現在的毛利文化晚宴多半會示範。</p></div>
+      <div class="art"><span class="k">WAIATA</span><h3>歌謠</h3><p>演講結束後一定要唱一首歌支持講者。歌謠裡藏著家譜、地名、航線和歷史事件，等於一部會唱的史書。</p></div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="ch" id="contact">
+    <div class="ch-head"><span class="num">CHAPTER 05</span><span class="era">1642 — 1840</span><h2>相遇與條約</h2></div>
+    <div class="prose">
+      <p class="lead-p">歐洲人第一次來，毛利人就讓他們沒能上岸。兩百年後，雙方簽下一份條約，但英文版和毛利文版寫的不是同一件事。</p>
+      <ol class="steps">
+        <li><div><b>1642　Abel Tasman</b>：荷蘭航海家第一個抵達，和毛利人衝突，四名船員被殺，他沒有上岸就離開。</div></li>
+        <li><div><b>1769　庫克船長</b>：127 年後英國的庫克抵達北島東岸，之後繞行兩島畫出地圖。</div></li>
+        <li><div><b>1790 年代起　捕鯨船、傳教士</b>：海豹獵人和捕鯨人集中在北端和最南端，帶來鐵器、馬鈴薯、火槍，也帶來毛利人沒有抵抗力的疾病。1814 年傳教士開始用拉丁字母拼寫毛利語。</div></li>
+        <li><div><b>1810–1830 年代　火槍戰爭</b>：先拿到火槍的部族攻打宿敵，毛利人口最多因此減少了五分之一。</div></li>
+        <li><div><b>1840　懷唐伊條約</b>：英國代表 Hobson 在北島 Bay of Islands 的 Waitangi 和酋長簽約。之後八個月在全國辦了約 50 場簽署會，約 540 位酋長簽名，大部分簽的是毛利文版。當年年底紐西蘭成為英國殖民地。</div></li>
+      </ol>
+    </div>
+
+    <div class="treaty">
+      <h3>同一份條約，兩種說法</h3>
+      <p style="color:var(--muted);margin:8px 0 14px;max-width:40em">檔案館保存的九份條約裡，只有一份是英文。點選下方切換兩個版本。</p>
+      <div class="toggle" role="group" aria-label="切換版本">
+        <button type="button" id="tv-mi" aria-pressed="true">毛利文版</button>
+        <button type="button" id="tv-en" aria-pressed="false">英文版</button>
+      </div>
+      <div class="articles" id="articles"></div>
+      <p style="margin-top:16px;max-width:40em">酋長們以為自己讓出的是治理權，保留了對土地和珍寶的自主權；英國則認為已經拿到主權。今天紐西蘭許多政治爭議，追根究柢都回到這個落差。</p>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="ch" id="loss">
+    <div class="ch-head"><span class="num">CHAPTER 06</span><span class="era">1845 — 1970 年代</span><h2>失去土地與語言</h2></div>
+    <div class="prose">
+      <p class="lead-p">簽約後半個世紀，毛利人手上的土地剩不到 1840 年的 15%。再過一個世紀，連語言都快消失了。</p>
+      <h3>土地</h3>
+      <ul class="dots">
+        <li><b>紐西蘭戰爭（1845–1872）</b>：移民越來越多，政府要買地，北島一些部族拒絕賣，雙方打了一連串戰爭，死亡約 3,000 人，大多是毛利人。</li>
+        <li><b>沒收</b>：戰後政府以「叛亂」為由沒收大片部族土地。</li>
+        <li><b>土著土地法院（1865）</b>：把部族共有的土地拆成個人產權，方便一塊塊賣給移民。</li>
+        <li><b>Parihaka（1881）</b>：北島塔拉納基的 Parihaka 村以和平方式抵抗占地，村民用犁田、拔界樁表達反對。1881 年 11 月軍隊開進村子逮捕領袖。</li>
+      </ul>
+      <h3>語言</h3>
+      <ul class="dots">
+        <li>1860 年代移民人數超過毛利人，英語成為主流，官方開始不鼓勵說毛利語，學校裡說毛利語的孩子會被處罰。</li>
+        <li>二戰前約 75% 的毛利人住在鄉下，二十年後約 60% 住在城市，離開了說毛利語的部族生活。</li>
+        <li>到 1980 年代，只剩不到 20% 的毛利人把毛利語當母語。</li>
+      </ul>
+      <p>同一時期，紐西蘭在 1893 年成為世界第一個讓女性在全國選舉投票的國家，1907 年成為英國自治領。白人社會一路往前，毛利社會卻在流失。</p>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="ch" id="revival">
+    <div class="ch-head"><span class="num">CHAPTER 07</span><span class="era">1970 年代 — 現在</span><h2>復興</h2></div>
+    <div class="prose">
+      <p class="lead-p">1970 年代，年輕一代毛利人開始抗議、請願，要回語言和土地。五十年後，毛利語是官方語言，政府為過去的違約一一道歉。</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>年份</th><th>事件</th></tr></thead>
+        <tbody>
+          <tr><td class="y">1972</td><td>毛利團體向國會遞交毛利語請願書；同年設立毛利語日</td></tr>
+          <tr><td class="y">1975</td><td>毛利語日擴大為毛利語週；懷唐伊法庭成立，受理違反條約的申訴</td></tr>
+          <tr><td class="y">1978</td><td>第一所官方雙語學校在北島 Rūātoki 開辦</td></tr>
+          <tr><td class="y">1982</td><td>第一所「語言巢」幼兒園（<span class="mi">Kōhanga Reo</span>）在 Lower Hutt 開辦，由祖父母輩全毛利語帶小孩</td></tr>
+          <tr><td class="y">1985</td><td>懷唐伊法庭權限往回延伸到 1840 年，可以審理一百多年前的土地申訴</td></tr>
+          <tr><td class="y">1987</td><td>《毛利語法》把毛利語定為紐西蘭官方語言</td></tr>
+          <tr><td class="y">1998</td><td>南島 Ngāi Tahu 完成和解，政府正式道歉</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose" style="margin-top:22px">
+      <p>懷唐伊法庭不是真正的法院，沒有判決權，只能提出建議。但它的報告讓政府開始和各部族談「條約和解」：正式道歉、賠償現金、歸還部分土地和聖地。</p>
+      <h3>今天的毛利人</h3>
+      <p>2023 年人口普查：毛利族裔占全國人口 17.8%，具有毛利血統的人占 19.6%，毛利人口的中位數年齡只有 27.2 歲，比全國年輕許多。人口最多的部族是北島的 Ngāpuhi（184,470 人），其次是 Ngāti Porou（超過 10 萬人）和 Ngāti Kahungunu（95,751 人）。</p>
+      <p>今天的紐西蘭常自稱 <span class="mi">Aotearoa New Zealand</span>，政府機關都有毛利語名字，新聞主播用「Kia ora」開場。每年 2 月 6 日的懷唐伊日是國定假日，也是每年辯論條約的日子。</p>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="ch" id="ngaitahu">
+    <div class="ch-head"><span class="num">CHAPTER 08</span><span class="era">1844 — 1998</span><h2>南島的 Ngāi Tahu</h2></div>
+    <div class="prose"><p class="lead-p">Ngāi Tahu 是南島最大的部族。他們賣掉了將近整座南島，最後只剩原本土地的千分之一，前後爭了一百五十年才拿到道歉。</p></div>
+
+    <figure class="landfig">
+      <div class="frame">
+        <div class="grid1000" id="grid1000" role="img" aria-label="1000 格中只有 1 格是 Ngāi Tahu 保留的土地"></div>
+        <div class="legend"><span>賣給政府：超過 3,400 萬英畝</span><span class="k">保留下來：約 3.7 萬英畝</span></div>
+      </div>
+      <figcaption>1844 到 1864 年間，政府向 Ngāi Tahu 買下超過 3,400 萬英畝土地，只付了約 14,750 英鎊。每一格代表 1/1000，紅色那一格是部族保留下來的部分。</figcaption>
+    </figure>
+
+    <div class="prose">
+      <ol class="steps">
+        <li><div><b>賣地</b>：1848 年的坎特伯里區塊一次就是約 2,000 萬英畝，將近全國三分之一。</div></li>
+        <li><div><b>食言</b>：答應的學校、醫院沒蓋；保留地被劃進賣地範圍；政府宣稱綠玉歸國家所有；傳統採集食物的地方也沒了。</div></li>
+        <li><div><b>申訴（Te Kerēme）</b>：一代代族人持續向政府申訴。1986 年 Rakiihia Tau 代表部族向懷唐伊法庭提告，案子被稱為「九棵大樹」。</div></li>
+        <li><div><b>裁定（1991）</b>：法庭發表三冊報告，認定政府「不道德地、一再違反懷唐伊條約」。</div></li>
+        <li><div><b>和解（1998）</b>：政府正式道歉、賠償 NZ$1 億 7,000 萬，確認 Ngāi Tahu 擁有綠玉，並把聖山 Aoraki 歸還部族。部族隨後把 Aoraki 送回給全國人民，山的正式名稱改成「Aoraki/Mount Cook」。</div></li>
+      </ol>
+      <p>和解金後來投資在漁業、農業、房地產和觀光業，今天 Ngāi Tahu 是紐西蘭規模數一數二的部族企業。</p>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="ch" id="legends">
+    <div class="ch-head"><span class="num">CHAPTER 09</span><span class="era">口傳的史書與地圖</span><h2>神話與傳說</h2></div>
+    <div class="prose"><p class="lead-p">毛利人沒有文字，神話就是他們的科學、歷史和地圖：天為什麼這麼高、火從哪裡來、人為什麼會死、哪座湖是誰挖的，都寫在故事裡。各部族的版本不一樣，以下是流傳最廣的說法，由天地初開講到南島的每一座山。</p></div>
+
+    <h3 class="lg-group"><span>I</span>天地初開</h3>
+    <div class="legends">
+      <article class="legend-card wide"><span class="place">創世 · Te Ao Mārama</span><h3>天父與地母被推開</h3><p>最初，天父 Ranginui 和地母 Papatūānuku 緊緊相擁，孩子們擠在兩人中間的黑暗裡，連站都站不直。孩子們決定把父母分開。農作之神 Rongo、海神 Tangaroa、野生食物之神 Haumia、戰神 Tūmatauenga 輪流嘗試，都推不動。最後森林之神 Tāne 躺在地上，用雙腳把天父往上蹬，天和地終於分開，光照進世界，這個有光的世界叫 Te Ao Mārama。</p><p>雨是天父思念地母落下的眼淚，從地面升起的霧是地母對天父的嘆息。</p></article>
+      <article class="legend-card"><span class="place">風神 · Tāwhirimātea</span><h3>挖出雙眼的風神</h3><p>兄弟中只有風神 Tāwhirimātea 反對分開父母。他氣得挖出自己的雙眼丟上天空，那就是昴宿星團 Matariki。之後他跟著天父住在天上，一直用暴風和颶風報復兄弟們，所以森林被吹倒、海浪翻騰，都是他的怒氣。</p></article>
+      <article class="legend-card"><span class="place">冬至前後的黎明</span><h3>Matariki：毛利新年</h3><p>Matariki 在隆冬破曉前升起，許多部族把它當作新年的開始。這時候要紀念過去一年過世的人，相信他們的靈魂會變成星星；也要感謝收成、和家人共享食物。這個習俗在 1940 年代幾乎消失，2000 年代重新興起，2022 年起成為國定假日，每年在 6 或 7 月的一個星期五。</p></article>
+      <article class="legend-card"><span class="place">森林之神 · Tāne</span><h3>第一個人</h3><p>天地分開後，Tāne 為天父披上星星，為地母種滿森林，再用泥土捏出第一個人。所以紐西蘭的森林叫 Te Wao Nui a Tāne「Tāne 的大森林」，北島最大的貝殼杉也以 Tāne Mahuta「森林之王」命名。</p></article>
+    </div>
+
+    <h3 class="lg-group"><span>II</span>半神毛伊</h3>
+    <div class="prose" style="margin-bottom:6px"><p>Māui 是整個玻里尼西亞最有名的英雄，聰明、調皮、不守規矩。他做的每件事都改變了人類的生活。</p></div>
+    <ol class="maui">
+      <li><b>被丟進海裡的嬰兒</b><p>母親 Taranga 早產生下他，以為他活不了，剪下自己的頭髻包住他丟進海裡。海靈救了他，天上的祖父把他養大。他的全名 Māui-tikitiki-a-Taranga 就是「Taranga 頭髻裡的毛伊」。</p></li>
+      <li><b>套住太陽</b><p>當時太陽跑得太快，白天短到來不及煮飯、做事。毛伊和兄弟們編好繩索，在太陽升起的洞口設下陷阱套住太陽神 Tama-nui-te-rā，用祖母 Murirangawhenua 的顎骨打他，直到他答應放慢腳步。所以白天才有現在這麼長。</p></li>
+      <li><b>從火神那裡偷火</b><p>毛伊故意把村裡的火全部弄熄，去找住在地底的火神 Mahuika。她拔下一片燃燒的指甲給他，他出門就弄熄，再回去要，一片一片騙光她的指甲。火神發怒放火燒他，風神 Tāwhirimātea 和雷神 Whaitiri 降下大雨救了他。最後一片火鑽進 māhoe 和 kaikōmako 樹裡，所以毛利人用這兩種木頭摩擦生火。</p></li>
+      <li><b>釣起北島</b><p>毛伊偷偷躲進兄弟的船，用祖母的顎骨做魚鉤、自己的血當魚餌，釣起一條巨魚。他去找祭司做儀式，兄弟們等不及就開始切魚分肉，魚痛得翻滾，身體裂成山脈、懸崖和山谷。這條魚就是北島 Te Ika-a-Māui，他的船是南島，船錨是斯圖爾特島。</p></li>
+      <li><b>想替人類贏得永生</b><p>毛伊決定讓人類不再死亡。他要趁死亡女神 Hine-nui-te-pō 熟睡時，從她的身體鑽進去、從嘴巴出來。同行的鳥都答應保持安靜，一隻扇尾鶲（<span class="mi">pīwakawaka</span>）卻忍不住笑出聲，吵醒女神，毛伊被夾死。從此人都會死，而扇尾鶲在毛利文化裡也和死亡連在一起。</p></li>
+    </ol>
+
+    <h3 class="lg-group"><span>III</span>航海家與亡魂之路</h3>
+    <div class="legends">
+      <article class="legend-card"><span class="place">庫克海峽 · Te Moana-a-Kupe</span><h3>Kupe 追殺大章魚</h3><p>Hawaiki 有一隻屬於祭司 Muturangi 的巨大章魚 Te Wheke-a-Muturangi，一直偷吃漁夫的魚餌。航海家 Kupe 造了雙殼獨木舟一路追趕，越過大洋來到紐西蘭。章魚躲進北島東岸的洞穴，Kupe 最後在庫克海峽殺死牠，把牠的眼睛放在海峽中的兩座小島上。庫克海峽的毛利語名字就是「Kupe 的海」。</p></article>
+      <article class="legend-card"><span class="place">北島 · 南島</span><h3>Kupe 劈開島嶼</h3><p>另一個版本說，Kupe 找到的原本是一整座島，是他把它劈成南北兩半，中間就是庫克海峽。他回到 Hawaiki 後留下航線的指示，後來的獨木舟才照著來到 Aotearoa。</p></article>
+      <article class="legend-card"><span class="place">北端 · Te Rerenga Wairua</span><h3>亡魂起跳的地方</h3><p>北島最北端的雷恩加角，毛利語是 Te Rerenga Wairua「靈魂起跳之地」，是全紐西蘭最神聖的地方。人死後，靈魂沿著海岸往北走，到岬角上一棵古老的波胡圖卡瓦樹（<span class="mi">pōhutukawa</span>），順著樹根滑進海裡，游到外海的三王島，爬上最高點回頭道別，再回到祖先的故鄉 Hawaiki。</p></article>
+    </div>
+
+    <h3 class="lg-group"><span>IV</span>北島：火山與愛情</h3>
+    <div class="legends">
+      <article class="legend-card"><span class="place">Rotorua · Taupō · Tongariro</span><h3>從 Hawaiki 召來的火</h3><p>祭司 Ngātoroirangi 乘 Te Arawa 號來到北島，登上高山時快要凍死。他向遠在 Hawaiki 的兩個姊姊 Te Hoata 和 Te Pupu 求救，她們化成火，從地底一路趕來救他。火走過的地方冒出滾燙的泥漿池、火山和間歇泉，這就是北島地熱帶的由來。</p></article>
+      <article class="legend-card"><span class="place">Tongariro · Taranaki · Pīhanga</span><h3>山的戰爭</h3><p>Tongariro、Taranaki、Tauhara、Pūtauaki 幾座火山原本站在一起，都愛上了美麗的女山 Pīhanga。在 Ngāti Tūwharetoa 族流傳的版本裡，Tongariro 打贏了，其他山只好離開，一直走到天亮，被初升的太陽定住在今天的位置。所以 Taranaki 孤零零地站在北島西岸。</p></article>
+      <article class="legend-card"><span class="place">Rotorua 湖</span><h3>湖上的笛聲</h3><p>酋長女兒 Hinemoa 愛上住在湖中 Mokoia 島上的 Tūtānekai。家人把獨木舟都拉上岸不讓她去，她就在夜裡抱著葫蘆當浮板，跟著島上傳來的笛聲游過整個湖，在島上的溫泉裡取暖等他。</p></article>
+      <article class="legend-card"><span class="place">河流 · 湖泊 · 港灣</span><h3>Taniwha 水怪</h3><p>Taniwha 是住在河流、深潭、海灣裡的靈物，有的守護部族，有的吃人。許多河道和港灣傳說是 taniwha 挖出來的。今天修路、蓋橋前，有時還會先和部族商量，避免驚動當地的 taniwha。</p></article>
+      <article class="legend-card"><span class="place">地底世界 · Rarohenga</span><h3>紋面的由來</h3><p>酋長 Mataora 娶了地底世界的精靈 Niwareka，卻動手打她，她逃回地底。Mataora 追下去，看到岳父 Uetonga 臉上刻著真正的紋面，自己臉上畫的花紋一擦就掉。他懺悔後學會紋面，和妻子一起回到人間，從此人類有了 tā moko。</p></article>
+    </div>
+
+    <h3 class="lg-group"><span>V</span>南島：Aoraki 的獨木舟</h3>
+    <div class="prose" style="margin-bottom:6px"><p>整座南島在傳說中是一艘擱淺的獨木舟，南阿爾卑斯山是船的高側，峽灣是船身上劈出來的缺口。</p></div>
+    <div class="legends">
+      <article class="legend-card"><span class="place">南阿爾卑斯山 · Aoraki</span><h3>Aoraki 的獨木舟</h3><p>天父的兒子 Aoraki 帶著弟弟們乘獨木舟來看地母。回程時 Aoraki 念錯咒語，船擱淺在暗礁上傾斜。兄弟們爬到船的高側，身體化成石頭，成了南阿爾卑斯山。最年長、最高的 Aoraki 就是庫克山，Ngāi Tahu 把他視為最神聖的祖先。</p></article>
+      <article class="legend-card"><span class="place">南島內陸的大湖</span><h3>挖湖的 Rākaihautū</h3><p>祖先 Rākaihautū 乘 Uruao 號來到南島，拿著一把叫 Tu Whakarōria 的木鏟走遍內陸，沿路挖出並命名了 Takāpō、Pūkāki、Ōhau、Wānaka、Hāwea 和 Whakatipu。任務完成後，他把鏟子插在俯瞰 Akaroa 的山頂上。</p></article>
+      <article class="legend-card"><span class="place">Kaikōura</span><h3>吃龍蝦的地方</h3><p>探險家 Tama ki te Rangi 繞南島航行，在這裡停下來用火烤龍蝦。Kai 是吃，kōura 是龍蝦。毛伊釣北島時腳踩的也是這個半島，所以它最早的名字是「毛伊獨木舟的座板」。Ngāi Tahu 的祖先之一是騎著鯨魚來到紐西蘭的 Paikea，所以族人和鯨魚有血緣。</p></article>
+      <article class="legend-card"><span class="place">Moeraki · Shag Point</span><h3>沉船的食物籃</h3><p>最早抵達南島的獨木舟之一 Ārai-te-uru 號在 Shag Point 觸礁，船上的食物籃被沖上岸，變成 Moeraki 海灘上一顆顆巨大的圓石。</p></article>
+      <article class="legend-card"><span class="place">西岸 · Arahura 河</span><h3>綠玉之河</h3><p>Te Arawa 族的祖先 Ngāhue 在西岸 Arahura 河找到綠玉，把它做成斧頭，用來造獨木舟。綠玉因此也被叫作 Te Ika-o-Ngāhue「Ngāhue 的魚」，南島則被稱為 Te Waipounamu「綠玉之水」。</p></article>
+      <article class="legend-card"><span class="place">Wakatipu 湖</span><h3>會心跳的湖</h3><p>巨人 Matau 拐走酋長的女兒 Manata。愛慕她的平民 Matakauri 割不斷綁住她的魔法繩，她的眼淚卻溶開了繩子。後來 Matakauri 趁巨人熟睡放火燒他，燒出約 75 公里長的深溝，雨水灌滿成了湖。巨人的心臟還在湖底跳，所以湖面會規律升降，科學上叫「假潮」（seiche）。</p></article>
+      <article class="legend-card"><span class="place">Franz Josef 冰河</span><h3>雪崩少女的眼淚</h3><p>冰河的毛利語名字是 Kā Roimata o Hine Hukatere。少女 Hine Hukatere 帶著愛人 Wawe 登山，Wawe 失足摔死。她哭得太傷心，眼淚流成一條河又被凍成冰，就是今天的冰河。</p></article>
+      <article class="legend-card"><span class="place">峽灣區 · Atawhenua</span><h3>雕刻峽灣的神</h3><p>神祇 Tū Te Rakiwhānoa 用斧頭從 Aoraki 的獨木舟側壁劈出一個個峽灣，先刻南邊幾座練手，把最好的作品留給 Piopiotahi（米佛峽灣），放滿魚和鳥，讓人可以住。</p></article>
+      <article class="legend-card"><span class="place">米佛峽灣 · Piopiotahi</span><h3>沙蠅與孤單的鶇</h3><p>死亡女神 Hine-nui-te-pō 看到峽灣太美，擔心人類賴著不走，就放出沙蠅（<span class="mi">namu</span>）來趕人。米佛峽灣的毛利語 Piopiotahi 意思是「一隻孤單的鶇」：毛伊為人類求永生失敗死去後，一隻 piopio 鳥飛到這裡哀悼他。</p></article>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="ch" id="manners">
+    <div class="ch-head"><span class="num">CHAPTER 10</span><span class="era">在紐西蘭用得上</span><h2>禮儀與毛利語</h2></div>
+    <div class="prose">
+      <ul class="dots">
+        <li>頭是最神聖的部位，不要摸別人的頭，小孩也一樣。</li>
+        <li>不要坐在桌上，也不要把帽子、包包放在擺食物的桌上。</li>
+        <li>不要把食物從別人頭上遞過去。</li>
+        <li>有人正在對大家講話時，不要從他面前走過；非走不可就稍微彎腰快速通過。</li>
+        <li>進會堂（wharenui）要脫鞋，拍照前先問。</li>
+        <li>碰鼻禮由對方主動，你配合輕碰鼻子和額頭即可。</li>
+        <li>看到 haka 不要模仿著玩，它是正式的儀式。</li>
+      </ul>
+    </div>
+    <div class="phrases">
+      <div class="phrase"><span class="w">Kia ora</span><span class="say">kí-a ó-ra</span><span class="m">你好、謝謝，最萬用</span></div>
+      <div class="phrase"><span class="w">Tēnā kōrua</span><span class="say">téé-naa kó-ru-a</span><span class="m">兩位好（正式）</span></div>
+      <div class="phrase"><span class="w">Haere mai</span><span class="say">há-e-re mai</span><span class="m">歡迎</span></div>
+      <div class="phrase"><span class="w">Ka pai</span><span class="say">ka pai</span><span class="m">很好</span></div>
+      <div class="phrase"><span class="w">Ka kite anō</span><span class="say">ka kí-te a-nóó</span><span class="m">再見</span></div>
+      <div class="phrase"><span class="w">Aroha</span><span class="say">á-ro-ha</span><span class="m">愛、關懷</span></div>
+      <div class="phrase"><span class="w">Whānau</span><span class="say">fáá-nau</span><span class="m">家人</span></div>
+      <div class="phrase"><span class="w">Kai</span><span class="say">kai</span><span class="m">食物</span></div>
+      <div class="phrase"><span class="w">Aotearoa</span><span class="say">a-o-te-a-ró-a</span><span class="m">紐西蘭</span></div>
+    </div>
+    <div class="prose" style="margin-top:22px">
+      <h3>看懂地名</h3>
+      <p>毛利地名多半是幾個詞拼起來的描述：<span class="mi">wai</span> 是水（Waitaki、Waimakariri），<span class="mi">roto</span> 是湖（Rotorua＝第二個湖），<span class="mi">maunga</span> 是山，<span class="mi">ika</span> 是魚，<span class="mi">nui</span> 是大，<span class="mi">iti</span> 是小。</p>
+      <p>發音規則很規律：<span class="mi">wh</span> 唸成 f；母音上面有橫線（ā、ē、ō）就拉長；每個母音都要唸出來。Kaikōura 是「kai-kóó-u-ra」四個音節，不是「kai-kou-ra」。</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="ch" id="timeline">
+    <div class="ch-head"><span class="num">CHAPTER 11</span><span class="era">8,300 萬年前 — 2016</span><h2>大事年表</h2></div>
+    <div class="chips" role="group" aria-label="篩選年代" id="chips">
+      <button type="button" data-f="all" aria-pressed="true">全部</button>
+      <button type="button" data-f="land" aria-pressed="false">大地</button>
+      <button type="button" data-f="maori" aria-pressed="false">毛利</button>
+      <button type="button" data-f="contact" aria-pressed="false">相遇</button>
+      <button type="button" data-f="loss" aria-pressed="false">失去</button>
+      <button type="button" data-f="revival" aria-pressed="false">復興</button>
+    </div>
+    <ol class="timeline" id="tl"></ol>
+  </section>
+
+  <section class="ch" id="sources">
+    <div class="ch-head"><h2 style="font-size:var(--s3)">資料來源</h2></div>
+    <ul class="sources">
+      <li><a href="https://en.wikipedia.org/wiki/Zealandia" target="_blank" rel="noopener">Wikipedia：Zealandia</a></li>
+      <li><a href="https://teara.govt.nz/en/history/page-1" target="_blank" rel="noopener">Te Ara：Māori arrival and settlement</a></li>
+      <li><a href="https://teara.govt.nz/en/canoe-navigation" target="_blank" rel="noopener">Te Ara：Canoe navigation</a></li>
+      <li><a href="https://teara.govt.nz/en/nga-waewae-tapu-maori-exploration/page-10" target="_blank" rel="noopener">Te Ara：Ngā waewae tapu – Māori exploration</a></li>
+      <li><a href="https://teara.govt.nz/en/ta-moko-maori-tattooing" target="_blank" rel="noopener">Te Ara：Tā moko – Māori tattooing</a></li>
+      <li><a href="https://nzhistory.govt.nz/culture/history-of-new-zealand-1769-1914" target="_blank" rel="noopener">NZHistory：A history of New Zealand 1769–1914</a></li>
+      <li><a href="https://nzhistory.govt.nz/politics/treaty/treaty-faqs" target="_blank" rel="noopener">NZHistory：Treaty of Waitangi FAQs</a></li>
+      <li><a href="https://nzhistory.govt.nz/politics/treaty/the-treaty-in-practice/ngai-tahu" target="_blank" rel="noopener">NZHistory：The Ngāi Tahu claim</a></li>
+      <li><a href="https://nzhistory.govt.nz/culture/maori-language-week/history-of-the-maori-language" target="_blank" rel="noopener">NZHistory：History of the Māori language</a></li>
+      <li><a href="https://www.rnz.co.nz/news/te-manu-korihi/518182/what-the-census-tells-us-about-the-maori-population" target="_blank" rel="noopener">RNZ：What the census tells us about the Māori population</a></li>
+      <li><a href="https://www.rnz.co.nz/news/top/529115/statistics-reveal-big-changes-to-iwi-populations" target="_blank" rel="noopener">RNZ：Statistics reveal big changes to iwi populations</a></li>
+      <li><a href="https://www.wgtn.ac.nz/maori-hub/rauemi/tikanga-tips" target="_blank" rel="noopener">Victoria University of Wellington：Tikanga tips</a></li>
+      <li><a href="https://www.hermitage.co.nz/our-culture/" target="_blank" rel="noopener">The Hermitage：Aoraki legend</a></li>
+      <li><a href="https://www.linz.govt.nz/our-work/new-zealand-geographic-board/place-name-stories/maori-oral-history-atlas/rakaihautu-naming-great-lakes-canoe-aoraki" target="_blank" rel="noopener">LINZ：Rākaihautū – Naming great lakes</a></li>
+      <li><a href="https://whalewatch.co.nz/our-people/our-stories-and-culture/" target="_blank" rel="noopener">Whale Watch Kaikōura：Our stories and culture</a></li>
+      <li><a href="https://teara.govt.nz/en/object/1646/the-moeraki-boulders" target="_blank" rel="noopener">Te Ara：The Moeraki boulders</a></li>
+      <li><a href="https://www.southerndiscoveries.co.nz/latest/the-legend-of-lake-wakatipu" target="_blank" rel="noopener">Southern Discoveries：The legend of Lake Wakatipu</a></li>
+      <li><a href="https://ngaitahu.iwi.nz/opportunities-and-resources/publications/te-karaka/ka-roimata-o-hine-hukatere-tk90/" target="_blank" rel="noopener">Ngāi Tahu：Kā Roimata o Hine Hukatere</a></li>
+      <li><a href="https://www.learnz.org.nz/tamatea241/the-history-of-atawhenua-fiordland" target="_blank" rel="noopener">LEARNZ：The history of Atawhenua Fiordland</a></li>
+      <li><a href="https://southerndiscoveries.co.nz/milford-sound-history" target="_blank" rel="noopener">Southern Discoveries：Piopiotahi history</a></li>
+      <li><a href="https://teara.govt.nz/en/te-waonui-a-tane-forest-mythology/page-1" target="_blank" rel="noopener">Te Ara：Te Waonui a Tāne – forest mythology</a></li>
+      <li><a href="https://teara.govt.nz/en/matariki-maori-new-year" target="_blank" rel="noopener">Te Ara：Matariki – Māori New Year</a></li>
+      <li><a href="https://teara.govt.nz/en/whenua-how-the-land-was-shaped" target="_blank" rel="noopener">Te Ara：Whenua – how the land was shaped</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/M%C4%81ui_(M%C4%81ori_mythology)" target="_blank" rel="noopener">Wikipedia：Māui (Māori mythology)</a></li>
+      <li><a href="https://www.watersafetynz.org/kia-maanu-kia-ora/wai-puna/matauranga/kupe-te-wheke-a-muturangi" target="_blank" rel="noopener">Water Safety NZ：Kupe and Te Wheke a Muturangi</a></li>
+      <li><a href="https://www.doc.govt.nz/parks-and-recreation/places-to-go/northland/places/te-paki-recreation-reserve/cape-reinga-te-rerenga-wairua/heritage/" target="_blank" rel="noopener">DOC：Cape Reinga / Te Rerenga Wairua heritage</a></li>
+    </ul>
+  </section>
+
+  </main>
+</div>
+
+<footer><div class="wrap">Kia ora · 依公開史料與部族資料整理，傳說各部族版本不一。</div></footer>
+
+<script>
+(function(){
+  // treaty toggle
+  var A=[
+    {n:"第一條",mi:'酋長把<span class="key">kāwanatanga</span>（治理權）交給英國女王。',en:'酋長把<span class="key">sovereignty</span>（主權）完全讓給英國女王。',
+     note_mi:'毛利文用的是傳教士新造的詞，源自「總督」，意思接近管理、治理。',note_en:'英文是國際法上的完整主權。'},
+    {n:"第二條",mi:'女王保障毛利人對土地、家園和一切<span class="key">taonga</span>（珍寶）的<span class="key">tino rangatiratanga</span>（完整自主權）。',en:'女王保障毛利人<span class="key">full exclusive and undisturbed possession</span>（不受干擾地擁有）土地、森林、漁場和其他財產。',
+     note_mi:'taonga 可以包括語言、文化這些無形的東西。',note_en:'英文只講有形財產的「擁有」，沒有講自主權。'},
+    {n:"第三條",mi:'毛利人享有和英國子民同樣的權利。',en:'毛利人享有英國子民的所有權利與特權。',note_mi:'兩個版本意思大致相同。',note_en:'兩個版本意思大致相同。'}
+  ];
+  var box=document.getElementById('articles'),bMi=document.getElementById('tv-mi'),bEn=document.getElementById('tv-en');
+  function render(v){
+    box.innerHTML=A.map(function(a){return '<div class="article"><div class="n">'+a.n+'</div><div class="t">'+(v==='mi'?a.mi:a.en)+'<span class="alt">'+(v==='mi'?a.note_mi:a.note_en)+'</span></div></div>';}).join('');
+    bMi.setAttribute('aria-pressed',v==='mi');bEn.setAttribute('aria-pressed',v==='en');
+  }
+  bMi.addEventListener('click',function(){render('mi')});bEn.addEventListener('click',function(){render('en')});
+  render('mi');
+
+  // 1000 grid
+  var g=document.getElementById('grid1000'),h='';
+  for(var i=0;i<1000;i++){h+=(i===999?'<i class="kept"></i>':'<i></i>');}
+  g.innerHTML=h;
+
+  // timeline
+  var T=[
+    ["約 8,300 萬年前","land","西蘭大陸從岡瓦納古大陸裂開"],
+    ["約 2,500 萬年前","land","阿爾卑斯斷層開始活動，南阿爾卑斯山逐漸抬升"],
+    ["1250–1300","maori","東玻里尼西亞航海家抵達，毛利文化開始發展"],
+    ["定居後數個世紀","maori","恐鳥被獵捕至滅絕"],
+    ["1642","contact","荷蘭人 Abel Tasman 抵達，衝突後離開"],
+    ["1769","contact","庫克船長抵達並繪製地圖"],
+    ["1814","contact","傳教士開始用文字拼寫毛利語"],
+    ["1810–1830 年代","contact","火槍戰爭，毛利人口最多減少五分之一"],
+    ["1840","contact","懷唐伊條約簽署，紐西蘭成為英國殖民地"],
+    ["1848","loss","政府向 Ngāi Tahu 買下坎特伯里約 2,000 萬英畝"],
+    ["1845–1872","loss","紐西蘭戰爭，約 3,000 人死亡"],
+    ["1865","loss","土著土地法院成立，部族土地被拆成個人產權出售"],
+    ["1881","loss","軍隊進入和平抵抗的 Parihaka 村"],
+    ["1893","loss","紐西蘭成為世界第一個女性可在全國選舉投票的國家"],
+    ["1907","loss","紐西蘭成為英國自治領"],
+    ["1972","revival","毛利語請願書遞交國會"],
+    ["1975","revival","懷唐伊法庭成立；毛利語週開始"],
+    ["1976","revival","Hōkūleʻa 號不靠儀器從夏威夷航行到大溪地"],
+    ["1982","revival","第一所毛利語幼兒園 Kōhanga Reo 開辦"],
+    ["1987","revival","毛利語成為官方語言"],
+    ["1991","revival","懷唐伊法庭裁定政府一再違約、虧欠 Ngāi Tahu"],
+    ["1998","revival","Ngāi Tahu 和解：道歉、賠償 NZ$1.7 億、歸還 Aoraki"],
+    ["2011","land","基督城大地震"],
+    ["2016","land","Kaikōura 地震"]
+  ];
+  var tags={land:"大地",maori:"毛利",contact:"相遇",loss:"失去",revival:"復興"};
+  var tl=document.getElementById('tl');
+  tl.innerHTML=T.map(function(r){return '<li data-era="'+r[1]+'"><span class="when">'+r[0]+'</span><span class="what"><span class="tag">'+tags[r[1]]+'</span>'+r[2]+'</span></li>';}).join('');
+  var chips=document.querySelectorAll('#chips button');
+  chips.forEach(function(b){b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    chips.forEach(function(c){c.setAttribute('aria-pressed',c===b)});
+    tl.querySelectorAll('li').forEach(function(li){li.hidden=!(f==='all'||li.getAttribute('data-era')===f)});
+  })});
+
+  // toc highlight
+  var links=[].slice.call(document.querySelectorAll('#toc a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('section.ch[id]').forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+
+</body>
+</html>
